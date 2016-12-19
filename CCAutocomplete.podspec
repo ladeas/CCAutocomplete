@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         	= "CCAutocomplete"
-  s.version      	= "1.0.0"
+  s.version      	= "1.0.1"
   s.summary      	= "Autocomplete for UITextField"
   s.ios.deployment_target = 9.0
   s.homepage     	= "https://github.com/juanbus/CCAutocomplete"
