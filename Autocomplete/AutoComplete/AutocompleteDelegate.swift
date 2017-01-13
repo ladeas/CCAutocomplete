@@ -10,10 +10,10 @@ import UIKit
 
 public protocol AutocompleteDelegate: class {
     func autoCompleteTextField() -> UITextField
-    func autoCompleteThreshold(_ textField: UITextField) -> Int
-    func autoCompleteItemsForSearchTerm(_ term: String) -> [AutocompletableOption]
+    func autoCompleteThreshold(textField: UITextField) -> Int
+    func autoCompleteItemsForSearchTerm(term: String) -> [AutocompletableOption]
     func autoCompleteHeight() -> CGFloat
-    func didSelectItem(_ item: AutocompletableOption) -> Void
+    func didSelectItem(item: AutocompletableOption) -> Void
 
     func nibForAutoCompleteCell() -> UINib
     func heightForCells() -> CGFloat
@@ -26,7 +26,7 @@ public extension AutocompleteDelegate {
     }
 
     func heightForCells() -> CGFloat {
-        return 60
+        return 38
     }
 
     func getCellDataAssigner() -> ((UITableViewCell, AutocompletableOption) -> Void) {
