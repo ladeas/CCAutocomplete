@@ -10,7 +10,7 @@ import UIKit
 
 //MARK: UITableViewDataSource extension
 extension AutoCompleteViewController: UITableViewDataSource {
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         if let items = self.autocompleteItems, items.count > 0 {
             return 1
         }

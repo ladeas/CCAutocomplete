@@ -10,9 +10,9 @@ import UIKit
 
 let AutocompleteCellReuseIdentifier = "autocompleteCell"
 
-public class AutoCompleteViewController: UIViewController {
+open class AutoCompleteViewController: UIViewController {
     //MARK: - outlets
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
 
     //MARK: - internal items
     internal var autocompleteItems: [AutocompletableOption]?
@@ -22,15 +22,15 @@ public class AutoCompleteViewController: UIViewController {
     internal let animationDuration: TimeInterval = 0.2    
 
     //MARK: - private properties
-    private var autocompleteThreshold: Int?
-    private var maxHeight: CGFloat = 0
-    private var height: CGFloat = 0
+    fileprivate var autocompleteThreshold: Int?
+    fileprivate var maxHeight: CGFloat = 0
+    fileprivate var height: CGFloat = 0
 
     //MARK: - public properties
-    public weak var delegate: AutocompleteDelegate?
+    open weak var delegate: AutocompleteDelegate?
 
     //MARK: - view life cycle
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         shadowAutoCompleteVC()
         self.view.isHidden = true
@@ -43,8 +43,8 @@ public class AutoCompleteViewController: UIViewController {
             height: self.height)
 
         self.tableView.register(self.delegate!.nibForAutoCompleteCell(), forCellReuseIdentifier: AutocompleteCellReuseIdentifier)
-        self.textField?.addTarget(self, action: #selector(UITextInputDelegate.textDidChange(_:)), for: UIControlEvents.editingChanged)
-        self.autocompleteThreshold = self.delegate!.autoCompleteThreshold(textField: self.textField!)
+        self.textField?.addTarget(self, action: #selector(AutoCompleteViewController.textDidChange(_:)), for: UIControlEvents.editingChanged)
+        self.autocompleteThreshold = self.delegate!.autoCompleteThreshold(self.textField!)
         self.cellDataAssigner = self.delegate!.getCellDataAssigner()
 
         self.cellHeight = self.delegate!.heightForCells()
@@ -63,19 +63,19 @@ public class AutoCompleteViewController: UIViewController {
         tableView.layer.masksToBounds = false // bug in the code
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
     //MARK: - private methods
-    @objc func textDidChange(textField: UITextField) {
+    @objc func textDidChange(_ textField: UITextField) {
         tableView.isHidden = false // showing tableView because hiding after end editing 
         let numberOfCharacters = textField.text?.characters.count
         if let numberOfCharacters = numberOfCharacters {
             if numberOfCharacters > self.autocompleteThreshold! {
                 self.view.isHidden = false
                 guard let searchTerm = textField.text else { return }
-                self.autocompleteItems = self.delegate!.autoCompleteItemsForSearchTerm(term: searchTerm)
+                self.autocompleteItems = self.delegate!.autoCompleteItemsForSearchTerm(searchTerm)
                 UIView.animate(withDuration: self.animationDuration,
                     delay: 0.0,
                     options: .curveEaseInOut,

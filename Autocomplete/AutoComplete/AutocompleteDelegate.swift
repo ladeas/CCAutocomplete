@@ -10,10 +10,10 @@ import UIKit
 
 public protocol AutocompleteDelegate: class {
     func autoCompleteTextField() -> UITextField
-    func autoCompleteThreshold(textField: UITextField) -> Int
-    func autoCompleteItemsForSearchTerm(term: String) -> [AutocompletableOption]
+    func autoCompleteThreshold(_ textField: UITextField) -> Int
+    func autoCompleteItemsForSearchTerm(_ term: String) -> [AutocompletableOption]
     func autoCompleteHeight() -> CGFloat
-    func didSelectItem(item: AutocompletableOption) -> Void
+    func didSelectItem(_ item: AutocompletableOption) -> Void
 
     func nibForAutoCompleteCell() -> UINib
     func heightForCells() -> CGFloat

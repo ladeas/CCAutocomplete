@@ -7,23 +7,23 @@
 //
 
 import UIKit
-public class Autocomplete {
-    public class func setupAutocompleteForViewcontroller<T: UIViewController where T: AutocompleteDelegate>(viewController: T) {
-
+open class Autocomplete {
+    open class func setupAutocompleteForViewcontroller<T: UIViewController>(_ viewController: T) where T: AutocompleteDelegate {
+        
         let podBundle: Bundle = Bundle(for: Autocomplete.self)
-
+        
         let storyboard = UIStoryboard(name: "Autocomplete", bundle: podBundle)
         let autoCompleteViewController = storyboard.instantiateViewController(withIdentifier: "autocompleteScene") as! AutoCompleteViewController
         
         autoCompleteViewController.delegate = viewController
-
+        
         autoCompleteViewController.willMove(toParentViewController: viewController)
         viewController.addChildViewController(autoCompleteViewController)
         autoCompleteViewController.didMove(toParentViewController: viewController)
-
+        
         autoCompleteViewController.view.willMove(toSuperview: viewController.view)
         viewController.view.addSubview(autoCompleteViewController.view)
         autoCompleteViewController.view.didMoveToSuperview()
-
+        
     }
 }

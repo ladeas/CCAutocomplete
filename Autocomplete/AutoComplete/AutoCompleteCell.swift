@@ -44,13 +44,13 @@ extension UIColor {
 }
 
 
-public class AutoCompleteCell: UITableViewCell {
+open class AutoCompleteCell: UITableViewCell {
     //MARK: - outlets
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgIcon: UIImageView!
-
+    
     //MARK: - public properties
-    public var textImage: AutocompleteCellData? {
+    open var textImage: AutocompleteCellData? {
         didSet {
             self.lblTitle.text = textImage!.text
             self.imgIcon.image = textImage!.image
