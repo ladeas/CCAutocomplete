@@ -17,9 +17,9 @@ open class Autocomplete {
         
         autoCompleteViewController.delegate = viewController
         
-        autoCompleteViewController.willMove(toParentViewController: viewController)
-        viewController.addChildViewController(autoCompleteViewController)
-        autoCompleteViewController.didMove(toParentViewController: viewController)
+        autoCompleteViewController.willMove(toParent: viewController)
+        viewController.addChild(autoCompleteViewController)
+        autoCompleteViewController.didMove(toParent: viewController)
         
         autoCompleteViewController.view.willMove(toSuperview: viewController.view)
         viewController.view.addSubview(autoCompleteViewController.view)

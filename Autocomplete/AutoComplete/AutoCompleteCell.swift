@@ -56,7 +56,7 @@ open class AutoCompleteCell: UITableViewCell {
             self.imgIcon.image = textImage!.image
             self.lblTitle.textColor = UIColor.textGray
             self.lblTitle.font = UIFont(name: lblTitle.font.fontName, size: 16)
-            self.selectionStyle = UITableViewCellSelectionStyle.none
+            self.selectionStyle = UITableViewCell.SelectionStyle.none
         }
     }
 }
