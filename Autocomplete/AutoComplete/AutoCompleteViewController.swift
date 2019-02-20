@@ -70,7 +70,7 @@ open class AutoCompleteViewController: UIViewController {
     //MARK: - private methods
     @objc func textDidChange(_ textField: UITextField) {
         tableView.isHidden = false // showing tableView because hiding after end editing 
-        let numberOfCharacters = textField.text?.characters.count
+        let numberOfCharacters = textField.text?.count
         if let numberOfCharacters = numberOfCharacters {
             if numberOfCharacters > self.autocompleteThreshold! {
                 self.view.isHidden = false
